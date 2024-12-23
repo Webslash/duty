@@ -1,0 +1,74 @@
+{
+  "name": "@duty/core",
+  "version": "0.0.1",
+  "description": "Effortless durable functions for smart developers",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carnewal/duty"
+  },
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=8000 tsup --clean --dts --minify",
+    "dev": "cross-env NODE_OPTIONS='--max-old-space-size=4000' tsup --watch --sourcemap",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      }
+    },
+    "./adapters/prisma": {
+      "import": {
+        "types": "./dist/adapters/prisma.d.ts",
+        "default": "./dist/adapters/prisma.js"
+      },
+      "require": {
+        "types": "./dist/adapters/prisma.d.cts",
+        "default": "./dist/adapters/prisma.cjs"
+      }
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.ts"
+      ],
+      "adapters/prisma": [
+        "./dist/adapters/prisma.d.ts"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "better-sqlite3": "^11.7.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.24.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "files": [
+    "dist"
+  ]
+}
