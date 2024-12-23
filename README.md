@@ -13,7 +13,7 @@ npm i --save @duty/core
 ## How it works 
 
 ```ts
-const db = new PrismaClient() o// Supports prisma, kysely,... or easily build your wn.
+const db = new PrismaClient() // Supports prisma, kysely,... or easily build your wn.
 
 const duty = await worker({ storage: prismaAdapter(db) });
 
