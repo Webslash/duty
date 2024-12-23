@@ -44,7 +44,7 @@ await embedDocumentsTask.run({ documentIds: ['document-1', 'document-2', '...', 
 
 **Task Runs** happen when a task is executed for a given set of parameters. 
 
-**Activities** are smaller, focused, idempotent functions. When an activity resolves, Duty caches the Activity result for the given parameters inside the Task Run. when the Activity is called with the same parameters, a cached result is used instead of running the Activity again.
+**Activities** are smaller, focused, idempotent functions. When an activity resolves, Duty caches the Activity result for the given parameters inside the Task Run. When the Activity is called with the same parameters, a cached result is used instead of running the Activity again.
 
 Duty ensures durability of tasks by:
 - Automatically persisting state
@@ -52,7 +52,9 @@ Duty ensures durability of tasks by:
 - Allowing progress to be resumed thanks to the cached nature of Activities
 
 This is clear in the example above. When execution of the `run` function fails at `document-500` (because OpenAi throttles you, because the server stopped, ...), Duty will retry the Task Run. 
+
 When the Task Run is retried, Duty will once again loop over the documentIds but will not run the activity for the first 499 documents as it encounters cache hits. 
+
 Once Duty reaches `document-500` again, it will continue where it left off.
 
 
