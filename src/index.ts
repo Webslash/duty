@@ -3,9 +3,10 @@ import { createActivityResultCache } from "./activityResultCache";
 import type { StorageAdapter } from "./adapters";
 
 /**
- * IDEAS
+ * IDEAS & TODO
  *
- * - Allow shared activity result cache between all runs of a task
+ * - TODO: Serialize task run & activity params correctly - currently it's just JSON.stringify
+ * - IDEA: Allow shared activity result cache between all runs of a task
  *
  * @returns
  */
@@ -45,7 +46,6 @@ export const worker = async (workerConfig: { storage: StorageAdapter }) => {
       runParams: RunParams
     ) => Promise<void>;
   }) => {
-
     const runFunction = async (runParams: RunParams, taskRunId?: string) => {
       if (!taskRunId) {
         taskRunId = `${taskConfig.name}-${randomUUID()}`;

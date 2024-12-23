@@ -1,7 +1,8 @@
 import { createHash } from "crypto";
+import jsonStringify from "fast-json-stable-stringify";
 
 export const hashJson = (json: any) =>
-  createHash("sha256").update(JSON.stringify(json)).digest("hex");
+  createHash("sha256").update(jsonStringify(json)).digest("hex");
 
 export const getActivityId = (
   taskRunId: string,

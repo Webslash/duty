@@ -1,10 +1,10 @@
 # Duty
 
-Build TypeScript functions that are durable by default; no PhD required. 
+Durable TypeScript functions made easy
 
-- 🎓 Intuitive: Easy to get started with
 - 📦 Compatible: Uses your existing storage layer
 - 🐺 Standalone: No dependencies on external platforms
+- 🎓 Intuitive: Crystal clear documentation, hundreds of examples
 
 ```
 npm i --save @duty/core
@@ -13,7 +13,7 @@ npm i --save @duty/core
 ## How it works 
 
 ```ts
-const db = new PrismaClient() // Supports prisma, kysely,... or easily build your wn.
+const db = new PrismaClient() // Supports prisma, kysely,... or easily build your own.
 
 const duty = await worker({ storage: prismaAdapter(db) });
 
