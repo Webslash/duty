@@ -1,21 +1,42 @@
-# Duty
+# Duty - TypeScript workflow orchestration
+
+> [!NOTE]  
+> You cannot yet install Duty, we are working towards a first release. Please star the repository to show your interest.
+
+Today, many applications have some kind of asynchronous processing pattern. 
+A common example is building anything with LLM APIs like Google Gemini or OpenAI. You want to do many API calls, ideally throttle here and there, and keep track of the result while you're at it.
+
+Typically this is solved with message queue systems like SQS or RabbitMQ.
+The problem with these is that they are often fire-and-forget. This created a space for so-called "workflow orchestration" tools which allow long-running tasks to complete durably. 
+The problem with these is that they're not that easy to maintain and too expensive to use at a scale you would a message queue. 
+
+Duty aims to be a lightweight workflow orchestration tool that uses your existing Postgres database and lets you scale to the amounts you would see on any regular message queue. It's a dependency you install like your favourite ORM prisma/kysely/drizzle/knex... 
+We aim to be the go-to tool of this type for new software projects as well as an attractive migration target. 
+
+A seperate dashboard component (Docker image) allows you to monitor your active workers, tasks and activities.
+
+Below is an example of what the API would look like. We'd appreciate a star on this repository if you think this is something for you.
+
+> [!NOTE]  
+> You cannot yet install Duty, we are working towards a first release. Please star the repository to show your interest.
+
+
+# Future Docs example
 
 Durable TypeScript functions made easy
 
-- 📦 Compatible: Uses your existing storage layer
+- 📦 Compatible: Uses your existing Postgres database
 - 🐺 Standalone: No dependencies on external platforms
 - 🎓 Intuitive: Crystal clear documentation, hundreds of examples
 
 ```
-npm i --save @duty/core
+npm i --save <duty has not been released yet>
 ```
 
 ## How it works 
 
 ```ts
-const db = new PrismaClient() // Supports prisma, kysely,... or easily build your own.
-
-const duty = await worker({ storage: prismaAdapter(db) });
+const duty = await worker({ database: process.env.DATABASE_URL });
 
 const embedDocumentsTask = await duty.task({
   name: 'embed-documents',
