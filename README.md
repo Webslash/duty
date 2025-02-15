@@ -17,11 +17,11 @@ A seperate dashboard component (Docker image) allows you to monitor your active 
 
 Below is an example of what the API would look like. We'd appreciate a star on this repository if you think this is something for you.
 
-> [!NOTE]  
-> You cannot yet install Duty, we are working towards a first release. Please star the repository to show your interest.
-
 
 # Future Docs example
+
+> [!NOTE]  
+> You cannot yet install Duty, we are working towards a first release. Please star the repository to show your interest.
 
 Durable TypeScript functions made easy
 
