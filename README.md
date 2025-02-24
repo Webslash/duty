@@ -3,17 +3,22 @@
 > [!NOTE]  
 > You cannot yet install Duty, we are working towards a first release. Please star the repository to show your interest.
 
-Today, many applications have some kind of asynchronous processing pattern. 
-A common example is building anything with LLM APIs like Google Gemini or OpenAI. You want to do many API calls, ideally throttle here and there, and keep track of the result while you're at it.
+Asynchronous workloads are everywhere in modern apps - think batched LLM API calls (e.g., Google Gemini, OpenAI) where you’re juggling throttling, tracking results, and ensuring nothing gets lost. Message queues like SQS or RabbitMQ are the default go-to: fire-and-forget systems that scale but leave you bolting on state management hacks to keep track of what’s happened. 
 
-Typically this is solved with message queue systems like SQS or RabbitMQ.
-The problem with these is that they are often fire-and-forget. This created a space for so-called "workflow orchestration" tools which allow long-running tasks to complete durably. 
-The problem with these is that they're not that easy to maintain and too expensive to use at a scale you would a message queue. 
+This created a space for "workflow orchestration tools": resilient engines built to handle long-running tasks with durability baked in. They tackle async workload chaos by:
+- Ensuring tasks endure failures
+- Preserving state across retries
+- Guaranteeing reliable completion
+- Eliminating the need for makeshift infrastructure fixes
 
-Duty aims to be a lightweight workflow orchestration tool that uses your existing Postgres database and lets you scale to the amounts you would see on any regular message queue. It's a dependency you install like your favourite ORM prisma/kysely/drizzle/knex... 
-We aim to be the go-to tool of this type for new software projects as well as an attractive migration target. 
+However, existing solutions are a pain to configure, maintain, and often cost a fortune when you use them for queue-like workloads.
 
-A seperate dashboard component (Docker image) allows you to monitor your active workers, tasks and activities.
+Duty’s different. It’s a lean TypeScript workflow orchestration library that uses your existing **Postgres** instance — no external dependencies, no platform lock-in, fully open source.
+
+Install it like you would Prisma/Kysely/Drizzle. Scale it to queue-level volumes, with all the pros of a workflow platform. 
+
+We’re gunning to be the default pick for greenfield projects and a no-brainer migration path for existing solutions. A standalone dashboard (Docker image) gives you visibility into workers, tasks, and activities.
+
 
 Below is an example of what the API would look like. We'd appreciate a star on this repository if you think this is something for you.
 
