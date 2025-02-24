@@ -13,7 +13,7 @@ This created a space for "workflow orchestration tools": resilient engines built
 
 However, existing solutions are a pain to configure, maintain, and often cost a fortune when you use them for queue-like workloads.
 
-Duty’s different. It’s a lean TypeScript workflow orchestration library that uses your existing **Postgres** instance — no external dependencies, no platform lock-in, fully open source.
+Duty’s different. It’s a lean TypeScript workflow orchestration library that uses your existing **Postgres** database — no external dependencies, no platform lock-in, fully open source.
 
 Install it like you would Prisma/Kysely/Drizzle. Scale it to queue-level volumes, with all the pros of a workflow platform. 
 
